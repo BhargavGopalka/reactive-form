@@ -1,0 +1,45 @@
+<p>
+  structural-directives works!
+</p>
+
+
+
+<p *ngIf="true">
+  Expression is true and ngIf is true.
+  This paragraph is in the DOM.
+</p>
+<p *ngIf="false">
+  Expression is false and ngIf is false.
+  This paragraph is not in the DOM.
+</p>
+
+<fieldset>
+  <h1>Country Information
+    <hr>
+    <input type="text" [(ngModel)]=cName>
+    <button (click)=searchCapital()>Submit</button>
+
+    <h3>Capital City: {{cCapital | json}}</h3>
+
+    <br><br>
+
+    <!--<button (click)=countryInformation()>Submit</button>-->
+  </h1>
+  <br>
+  <table border="1">
+    <tr>
+      <th>ID</th>
+      <th>Country Name</th>
+      <th>Country Capital</th>
+      <th>Country demonym</th>
+    </tr>
+    <tr *ngFor="let country of countries; let i = index">
+      <td>{{i + 1}}</td>
+      <td>{{country.name}}</td>
+      <td>{{country.capital}}</td>
+      <td>{{country.demonym}}</td>
+    </tr>
+  </table>
+
+</fieldset>
+

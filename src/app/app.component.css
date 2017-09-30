@@ -1,0 +1,10 @@
+p span { color: red; font-size: 70%; }
+
+.unless {
+  border: 2px solid;
+  padding: 6px;
+}
+
+p.unless {
+  width: 500px;
+}

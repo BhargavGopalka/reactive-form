@@ -1,0 +1,61 @@
+
+<br><br>
+<form [formGroup]="detailForm" (submit)="addToTable(detailForm)">
+  <fieldset>
+    <br>
+    First Name: <input type="text" placeholder="First Name" name="firstName" formControlName="firstName">
+    <br><br>
+    Last Name: <input type="text" placeholder="Last Name" name="lastName" formControlName="lastName">
+    <br><br>
+    Gender: <input type="radio" value="male" name="gender" formControlName="gender">Male
+            <input type="radio" value="female" name="gender" formControlName="gender">Female
+            <input type="radio" value="others" name="gender" formControlName="gender">Others
+    <br><br>
+    Age:<select name="age" formControlName="age">
+    <option *ngFor="let number of numbers">{{number}}</option>
+  </select>
+
+    <br><br>
+    <button type="submit">Save</button>
+  </fieldset><br><br>
+</form>
+
+<table border="1">
+  <tr>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Gender</th>
+    <th>Age</th>
+  </tr>
+  <tr *ngFor="let detail of details">
+    <td>{{detail.firstName}}</td>
+    <td>{{detail.lastName}}</td>
+    <td>{{detail.gender}}</td>
+    <td>{{detail.age}}</td>
+  </tr>
+</table>
+<br><br>
+
+<fieldset>
+<h1>Country Information
+<hr>
+<input type="text" [(ngModel)]=countryName>
+<button (click)=searchCountry()>Search</button>
+
+
+</h1>
+  <br>
+  <table border="1">
+    <tr>
+      <th>Capital</th>
+      <th>Region</th>
+      <th>Population</th>
+    </tr>
+    <tr *ngFor="let cn of cns">
+      <td>{{cn.capital}}</td>
+      <td>{{cn.region}}</td>
+      <td>{{cn.population}}</td>
+    </tr>
+  </table>
+
+</fieldset>

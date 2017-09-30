@@ -1,0 +1,20 @@
+<button routerLink="/form">
+  Forms1
+</button>
+
+<button routerLink="anotherForm">Form 2</button>
+
+<button routerLink="structural">Structural</button>
+
+<p *myUnless="condition">Show this sentence Unless the condition is true.</p>
+
+<p *myUnless="condition" class="unless a">
+  (A) This paragraph is displayed because the condition is false.
+</p>
+
+<p *myUnless="!condition" class="unless b">
+  (B) Although the condition is true,
+  this paragraph is displayed because myUnless is set to false.
+</p>
+
+<router-outlet></router-outlet>
