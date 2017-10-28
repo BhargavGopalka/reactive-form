@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-form',
@@ -10,15 +10,28 @@ export class FormComponent implements OnInit {
 
   newForm: FormGroup;
 
-  constructor( private fb: FormBuilder ){ }
+  constructor(private fb: FormBuilder) {
+  }
 
   ngOnInit() {
+    this.buildForm();
+  }
+
+  buildForm() {
     this.newForm = this.fb.group({
       name: [''],
-      address: [''],
+      addresses: this.fb.array([
+        this.fb.group({
+          addLineOne: [''],
+          addLineTwo: [''],
+          city: [''],
+          country: ['']
+        })
+      ]),
       gender: [''],
       car: ['']
     });
+    console.log(this.newForm);
   }
 
   addInfo() {

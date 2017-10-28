@@ -1,22 +1,54 @@
 <form [formGroup]="newForm">
-  <br> <br>
-  Name: <br><input type="text" name="name" formControlName="name"><br><br>
-  Address: <br><input type="text" name="address" size="50" formControlName="address"><br><br>
   <fieldset>
-    Gender: <br><input type="radio" name="gender" value="male" formControlName="gender">Male<br>
-    <input type="radio" name="gender" value="female" formControlName="gender">Female<br>
-    <input type="radio" name="gender" value="other" formControlName="gender">Others<br>
-  </fieldset>
+    <br> <br>
+    Name: <br><input type="text" name="name" formControlName="name"><br><br>
+    <!--Addresses-->
+    <div formArrayName="addresses">
+      <div *ngFor="let address of newForm.controls.addresses.controls; let i=index">
+        <div>
+          Address #{{ i + 1 }}
+        </div>
 
-  <br>
+        <div [formGroupName]="i">
+        <div>
+          <label>Address Line 1:</label>
+          <input type="text" formControlName="addLineOne" required>
+        </div>
+
+        <div>
+          <label>Address Line 2:</label>
+          <input type="text" formControlName="addLineTwo">
+        </div>
+
+        <div>
+          <label>City</label>
+          <input type="text" formControlName="city" required>
+        </div>
+
+        <div>
+          <label>Country</label>
+          <input type="text" formControlName="country" required>
+        </div>
+        </div>
+
+      </div>
+    </div>
+    <fieldset>
+      Gender: <br><input type="radio" name="gender" value="male" formControlName="gender">Male<br>
+      <input type="radio" name="gender" value="female" formControlName="gender">Female<br>
+      <input type="radio" name="gender" value="other" formControlName="gender">Others<br>
+    </fieldset>
+
+    <br>
     Cars You Like:
     <select formControlName="car">
       <option name="car" value="Audi">Audi</option>
       <option name="car" value="BMW" selected>BMW</option>
       <option name="car" value="Mercedes">Mercedes</option>
       <option name="car" value="Jeep">Jeep</option>
-    </select>
+    </select><br><br>
+  </fieldset>
 
-  <br><br>
+  <br>
   <input type="submit" (click)="addInfo()">
 </form>
